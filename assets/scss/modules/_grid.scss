@@ -1,0 +1,91 @@
+// *! ACES base GRID v1.0.0 | (c) 2022 @ghofaralhasyim */
+
+// Config
+
+$GRID_COUNT: 12 !default;
+$GRID_MEDIUM: 48 * 1em !default;
+$GRID_LARGE: 64 * 1em !default;
+$GRID_XL: 75 * 1em !default;
+
+@function gridSize($size) {
+  @return $size / $GRID_COUNT * 100%;
+}
+
+// Style
+
+%grid_clearfix:after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+.grid {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.grid_column {
+  width: 100%;
+  min-height: 1px;
+  box-sizing: border-box;
+}
+
+@for $i from 1 through $GRID_COUNT {
+  .grid_column[col*='s#{$i}'] {
+    width: gridSize($i);
+  }
+
+  .grid_column[offset*='s#{$i}'] {
+    margin-left: gridSize($i);
+  }
+}
+
+@media screen and (min-width: #{$GRID_MEDIUM} ) {
+  .grid_column[col*='m'] {
+    margin-left: 0;
+  }
+
+  @for $i from 1 through $GRID_COUNT {
+    .grid_column[col*='m#{$i}'] {
+      width: gridSize($i);
+    }
+
+    .grid_column[offset*='m#{$i}'] {
+      margin-left: gridSize($i);
+    }
+  }
+}
+
+@media screen and (min-width: #{$GRID_LARGE}) {
+  .grid_column[col*='l'] {
+    margin-left: 0;
+  }
+
+  @for $i from 1 through $GRID_COUNT {
+    .grid_column[col*='l#{$i}'] {
+      width: gridSize($i);
+    }
+
+    .grid_column[offset*='l#{$i}'] {
+      margin-left: gridSize($i);
+    }
+  }
+}
+
+@media screen and (min-width: #{$GRID_XL}) {
+  .grid_column[col*='x'] {
+    margin-left: 0;
+  }
+
+  @for $i from 1 through $GRID_COUNT {
+    .grid_column[col*='x#{$i}'] {
+      width: gridSize($i);
+    }
+
+    .grid_column[offset*='x#{$i}'] {
+      margin-left: gridSize($i);
+    }
+  }
+}
