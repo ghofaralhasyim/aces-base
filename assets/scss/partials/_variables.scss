@@ -1,5 +1,7 @@
 $base_px_font_size: 16;
 $base_font_size: $base_px_font_size * 1px;
+$font_serif: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$base_font_family: $font_serif;
 
 $sm: 'screen and (min-width: 28em)';
 $md: 'screen and (min-width: 48em)';
