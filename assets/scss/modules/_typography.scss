@@ -1,0 +1,51 @@
+$RATIO: 1.2;
+
+@mixin typography_getStyle($multiplier) {
+  $font_size: 1em;
+
+  @if $multiplier == 0 {
+    $font_size: 1em;
+  } @else {
+    @for $i from 1 through $multiplier {
+      $font_size: $font_size * $RATIO;
+    }
+  }
+
+  font-size: $font_size;
+}
+
+$headings: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6';
+$multiplier: 5;
+
+@each $heading in $headings {
+  #{ $heading },
+  .#{ $heading } {
+    @include typography_getStyle($multiplier);
+  }
+
+  $multiplier: $multiplier - 1;
+}
+
+$sizes: 14, 16, 18, 20, 22, 24, 30, 36;
+
+@mixin fontSize($size) {
+  font-size: ($size / $base_px_font_size) * 1em;
+}
+
+@each $size in $sizes {
+  .f-#{$size} {
+    @include fontSize($size);
+  }
+}
+
+.font--bold {
+  font-weight: 700;
+}
+
+.font--semi-bold {
+  font-weight: 600;
+}
+
+.text--linetrough {
+  text-decoration: line-through;
+}

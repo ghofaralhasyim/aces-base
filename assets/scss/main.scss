@@ -1,1 +1,14 @@
 @import 'modules/modules';
+@import 'partials/normalize';
+
+html {
+  font: 400 14px $base_font_family;
+
+  @media #{$md} {
+    font-size: $base_font_size;
+  }
+}
+
+.w-full {
+  width: 100%;
+}
