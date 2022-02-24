@@ -10,8 +10,10 @@
               alt=""
               @click="toggle"
             />
-            <img src="~assets/img/aceslabs.png" class="site-logo" alt="" />
-            <i>ACES Labs</i>
+            <nuxt-link to="/">
+              <img src="~assets/img/aceslabs.png" class="site-logo" alt="" />
+              <i>ACES Labs</i>
+            </nuxt-link>
           </div>
         </div>
         <nav class="grid_column main-nav" col="s6,m10">
@@ -36,6 +38,10 @@ export default {
     return {
       toggler: false,
       sideNav: [
+        {
+          title: 'Getting Started',
+          url: '/documentation'
+        },
         {
           title: 'Typography',
           url: '/documentation/typography'
@@ -100,5 +106,14 @@ export default {
   justify-content: flex-end;
   align-items: center;
   color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 </style>
